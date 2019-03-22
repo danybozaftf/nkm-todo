@@ -1,0 +1,41 @@
+{
+  "name": "nkm-todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "NodeJS Koa MongoDB ToDo API",
+  "keywords": [
+    "Node",
+    "Koa",
+    "MongoDB"
+  ],
+  "author": "xorb <xorb@mail.com>",
+  "homepage": "https://github.com/xorb/nkm-todo",
+  "repository": "https://github.com/xorb/nkm-todo",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpileOnly src",
+    "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts*'",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/dotenv": "^6.1.0",
+    "@types/mongodb": "^3.1.22",
+    "dotenv": "^7.0.0",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "mongodb": "^3.2.1",
+    "retry": "^0.12.0",
+    "typescript": "^3.3.4000"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/koa": "^2.0.48",
+    "@types/retry": "^0.12.0",
+    "jest": "^24.5.0",
+    "ts-jest": "^24.0.0",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "tslint": "^5.14.0"
+  }
+}
