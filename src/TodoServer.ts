@@ -1,9 +1,9 @@
 /* tslint:disable:no-console */
 import { createServer, Server } from 'http'
 import Koa from 'koa'
-import bodyParser from 'koa-body'
 import mongo from './database'
-import router from './routes'
+import Middlewares from './middlewares'
+import Routes from './routes'
 import { normalizePort } from './utils'
 
 export default class TodoServer {
@@ -14,10 +14,18 @@ export default class TodoServer {
     this.server = createServer(this.app.callback())
   }
   public init() {
-    this.app.use(bodyParser())
-    this.app.use(router.routes())
+    this.initMiddlewares()
+    this.initRoutes()
     this.initDatabase()
     this.initApp()
+  }
+  private initMiddlewares() {
+    const middlewares = new Middlewares(this.app)
+    middlewares.init()
+  }
+  private initRoutes() {
+    const routes = new Routes(this.app)
+    routes.init()
   }
   private async initDatabase() {
     try {

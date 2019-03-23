@@ -6,8 +6,7 @@ export async function getTodos(ctx: Context) {
     const data = await todos.getAll()
     ctx.body = { data }
   } catch (err) {
-    ctx.status = err.status || 500
-    ctx.body = err.message
+    ctx.throw(err)
   }
 }
 
@@ -15,10 +14,9 @@ export async function getTodo(ctx: Context) {
   try {
     const { id } = (ctx as any).params
     const data = await todos.getOne(id)
-    ctx.body = { data }
+    data ? (ctx.body = { data }) : ctx.throw(404, 'Todo not found')
   } catch (err) {
-    ctx.status = err.status || 500
-    ctx.body = err.message
+    ctx.throw(err)
   }
 }
 
@@ -30,8 +28,7 @@ export async function createTodo(ctx: Context) {
       data
     }
   } catch (err) {
-    ctx.status = err.status || 500
-    ctx.body = err.message
+    ctx.throw(err)
   }
 }
 
@@ -44,8 +41,7 @@ export async function deleteTodo(ctx: Context) {
       data: true
     }
   } catch (err) {
-    ctx.status = err.status || 500
-    ctx.body = err.message
+    ctx.throw(err)
   }
 }
 
@@ -58,7 +54,6 @@ export async function updateTodo(ctx: Context) {
       data
     }
   } catch (err) {
-    ctx.status = err.status || 500
-    ctx.body = err.message
+    ctx.throw(err)
   }
 }

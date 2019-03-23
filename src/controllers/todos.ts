@@ -1,4 +1,3 @@
-import { Context } from 'koa'
 import { ObjectID } from 'mongodb'
 import mongo from '../database'
 
