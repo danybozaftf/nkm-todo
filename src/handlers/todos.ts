@@ -22,8 +22,8 @@ export async function getTodo(ctx: Context) {
 
 export async function createTodo(ctx: Context) {
   try {
-    const { text } = ctx.request.body
-    const data = await todos.create(text)
+    const { body } = ctx.request.body
+    const data = await todos.create(body)
     ctx.body = {
       data
     }
@@ -48,8 +48,8 @@ export async function deleteTodo(ctx: Context) {
 export async function updateTodo(ctx: Context) {
   try {
     const { id } = (ctx as any).params
-    const { text, completed } = ctx.request.body
-    const data = await todos.updateOne(id, text, completed)
+    const { body, completed } = ctx.request.body
+    const data = await todos.updateOne(id, body, completed)
     ctx.body = {
       data
     }

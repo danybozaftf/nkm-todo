@@ -7,6 +7,6 @@ export interface IRoute {
 }
 
 export interface ITodo {
-  text: string
+  body: string
   completed?: boolean
 }

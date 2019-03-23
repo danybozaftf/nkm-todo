@@ -1,7 +1,7 @@
 import Config from './config'
-import TodoServer from './TodoServer'
+import TodoService from './TodoService'
 
-const todoServer: TodoServer = new TodoServer()
+const todoServer: TodoService = new TodoService()
 const config: Config = new Config()
 
 config.init()

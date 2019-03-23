@@ -25,9 +25,9 @@ export async function getTodo(id: string) {
   })
 }
 
-export async function createTodo(text: string) {
+export async function createTodo(body: string) {
   const db = await mongo.getDb()
-  const todo = { text, completed: false }
+  const todo = { body, completed: false }
   return new Promise((resolve, reject) => {
     db.collection('todos').insertOne(todo, (err, response) => {
       err ? reject(err) : resolve(response.ops[0])
@@ -46,7 +46,7 @@ export async function deleteTodo(id: string) {
   })
 }
 
-export async function updateTodo(id: string, text: string, completed: string) {
+export async function updateTodo(id: string, body: string, completed: string) {
   const db = await mongo.getDb()
   const todoId = new ObjectID(id)
   return new Promise((resolve, reject) => {
@@ -54,7 +54,7 @@ export async function updateTodo(id: string, text: string, completed: string) {
       { _id: todoId },
       {
         $set: {
-          text,
+          body,
           completed
         }
       },

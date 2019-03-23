@@ -1,4 +1,4 @@
-# NodeJS KoJS MongoDB ToDO API
+# NodeJS KoaJS MongoDB ToDo API
 
 Basic ToDo API build on top of NodeJs and TypeScript. This project is only for demostration purposes(Not optimized for production enviroment, yet).
 
