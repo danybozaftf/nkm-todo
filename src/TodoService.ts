@@ -1,7 +1,7 @@
 /* tslint:disable:no-console */
+import { mongo } from '@xorb/mongo'
 import { createServer, Server } from 'http'
 import Koa from 'koa'
-import mongo from './database'
 import Middlewares from './middlewares'
 import Routes from './routes'
 import { normalizePort } from './utils'

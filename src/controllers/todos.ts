@@ -1,5 +1,5 @@
+import { mongo } from '@xorb/mongo'
 import { ObjectID } from 'mongodb'
-import mongo from '../database'
 
 export async function getTodos() {
   const db = await mongo.getDb()

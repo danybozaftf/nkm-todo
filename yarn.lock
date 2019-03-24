@@ -494,6 +494,14 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.10.tgz#17a8ec65cd8e88f51b418ceb271af18d3137df67"
   integrity sha512-WsVzTPshvCSbHThUduGGxbmnwcpkgSctHGHTqzWyFg4lYAuV5qXlyFPOsP3OWqCINfmg/8VXP+zJaa4OxEsBQQ==
 
+"@xorb/mongo@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@xorb/mongo/-/mongo-0.0.3.tgz#e759e2a886f024ae27c15bd81bf827966bdd0368"
+  integrity sha512-w9qQmk8mZ4N+Mol/BInH61zusEG5bua8kv/xbWPMIqfjIZ7fteYDB3r0NVJeYmOW2+AuJAtrIQiIhCvhwtYhiA==
+  dependencies:
+    mongodb "^3.2.2"
+    retry "^0.12.0"
+
 abab@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"
@@ -1466,6 +1474,11 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+
+faker@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/faker/-/faker-4.1.0.tgz#1e45bbbecc6774b3c195fad2835109c6d748cc3f"
+  integrity sha1-HkW7vsxndLPBlfrSg1EJxtdIzD8=
 
 fast-deep-equal@^2.0.1:
   version "2.0.1"
@@ -3023,12 +3036,31 @@ mongodb-core@3.2.1:
   optionalDependencies:
     saslprep "^1.0.0"
 
+mongodb-core@3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.2.2.tgz#d1c084b34c102a98b4734087800115e639d907c5"
+  integrity sha512-YRgC39MuzKL0uoGoRdTmV1e9m47NbMnYmuEx4IOkgWAGXPSEzRY7cwb3N0XMmrDMnD9vp7MysNyAriIIeGgIQg==
+  dependencies:
+    bson "^1.1.1"
+    require_optional "^1.0.1"
+    safe-buffer "^5.1.2"
+  optionalDependencies:
+    saslprep "^1.0.0"
+
 mongodb@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.2.1.tgz#a8af8f15a30ef0fd217405d3c77a25290ce81e0b"
   integrity sha512-Vboj2WjyQYGMe8RQ7tmxdvtcdthyEu2f+gDdua7zbKu5JjDPZFDbgjjJEgnfcluog8Po+VguqXoPs9Zh+PAuKw==
   dependencies:
     mongodb-core "3.2.1"
+    safe-buffer "^5.1.2"
+
+mongodb@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.2.2.tgz#49b592be3cd50097f78e0964488d18c2e189de20"
+  integrity sha512-xQ6apOOV+w7VFApdaJpWhYhzartpjIDFQjG0AwgJkLh7dBs7PTsq4A3Bia2QWpDohmAzTBIdQVLMqqLy0mwt3Q==
+  dependencies:
+    mongodb-core "3.2.2"
     safe-buffer "^5.1.2"
 
 ms@2.0.0:
