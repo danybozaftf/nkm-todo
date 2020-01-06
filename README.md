@@ -4,23 +4,17 @@ Dynasty Owner is a fantasy sports game using actual NFL salaries and contracts. 
 
 It is written in TypeScript, using express as main backend framework and Angular as main frontend framework.
 
-# How to start
-
-Both, frontend and backend requires to have [NodeJS](https://nodejs.org/en/) installed. The application is tested and developed in the **10.15.3** version of NodeJS. 
-
 ## Getting ready
 
 ### Add SSH key to github account
 
-Some dependencies used by the project are private and requires go be authentited in order to install them.
+Some dependencies used by the project are private and requires authentication. Add SSH Key to your account by following this [guide](https://help.github.com/en/enterprise/2.18/user/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account).
 
-Add SSH Key to your account by following this [guide](https://help.github.com/en/enterprise/2.18/user/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account).
+### Install dependant apps
 
-### Start dependant applications
+The core applications depends on Postgres, Redis and Elasticsearch. Make sure you have those application up and running before starting the core apps.
 
-The core applications are dependant from Postgres, Redis and Elasticsearch. It is required to have those dependencies up and running before starting the core applications.
-
-It is required to have [Docker](https://docs.docker.com/docker-for-windows/install/)  and [Docker Compose](https://docs.docker.com/compose/install/) installed.
+Use [Docker](https://docs.docker.com/docker-for-windows/install/)  and [Docker Compose](https://docs.docker.com/compose/install/) to start these applications.
 
 ```sh
 # Clone the repository
@@ -36,11 +30,14 @@ docker-compose up
 _This will download the images and start the dependant applications. If you prefer to run these applications in the background, add the **-d** flag to the docker-compose command._
 
 
-## Start Core Applications
+## How to start
+
+Both, frontend and backend requires to have [NodeJS](https://nodejs.org/en/) installed. The application is tested and developed in the **10.15.3** version of NodeJS. 
+
 
 ### UI application
 
-```sh
+```bash
 # Clone the repository
 git clone git@github.com:crossroads-group/DynastyOwner.git
 
@@ -58,7 +55,7 @@ _Visit http://localhost:4203 to see the application._
 
 ### Core API
 
-```sh
+```bash
 # Clone the repository
 git clone git@github.com:crossroads-group/DynastyOwner.git
 
@@ -80,7 +77,7 @@ npm start
 
 ### RealTime API
 
-```sh
+```bash
 # Clone the repository
 git clone git@github.com:crossroads-group/DynastyOwner.git
 
@@ -126,5 +123,8 @@ node ./build/server/app/mockDraftLobby/jobs/mockDraftLobbySweeper.job.js
 node ./build/server/app/mockDraftLobby/jobs/mockDraftLobbyInitializer.job.js
 
 ```
-
 With those steps done, the application should be ready to use.
+
+## License
+
+© 2019 Dynasty Owner – All Rights Reserved
