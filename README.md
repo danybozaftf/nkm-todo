@@ -68,12 +68,14 @@ npm install
 # Transpile TS to JS
 npm run gulp:build
 
-# Before starting CoreAPI, start database migrations. It should be done only at first time.
+# Before starting CoreAPI, start database migrations. It should be done only at first
 npm run db:migrate
 
 # Start the application
 npm start
 ```
+
+For development, use **npm run gulp:watch** in order to reload the code automatically
 
 ### RealTime API
 
@@ -90,13 +92,13 @@ npm install
 # Transpile TS to JS
 npm run gulp:build
 
-# Before starting RealTime API, start database migrations. It should be done only at first time.
+# Before starting RealTime API, start database migrations. It should be done only at first
 npm run db:migrate
 
 # Start the application
 npm start
 ```
-_For development, use **npm run gulp:watch** in order to reload the code automatically_
+For development, use **npm run gulp:watch** in order to reload the code automatically
 
 ### Add mock data and start playing
 
