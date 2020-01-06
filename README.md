@@ -98,7 +98,7 @@ npm start
 ```
 _For development, use **npm run gulp:watch** in order to reload the code automatically_
 
-## Add mock data and start playing
+### Add mock data and start playing
 
 Before start playing/testing in development mode, you need to add mock data and start some job proceses.
 
