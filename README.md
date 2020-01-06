@@ -27,7 +27,7 @@ cd DynastyOwner/
 docker-compose up
 ```
 
-_This will download the images and start the dependant applications. If you prefer to run these applications in the background, add the **-d** flag to the docker-compose command._
+This process should also create two directories in your local machine: `/data/dynasty_owner_local` and `/data/dynasty_owner_local_dev`. Make sure these folders exist, if not create them.
 
 
 ## How to start
