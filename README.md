@@ -1,97 +1,130 @@
-# NodeJS KoaJS MongoDB ToDo API
+# Dynasty Owner
 
-Basic ToDo API build on top of NodeJs and TypeScript. This project is only for demostration purposes(Not optimized for production enviroment, yet).
+Dynasty Owner is a fantasy sports game using actual NFL salaries and contracts. [https://dynastyowner.com/](https://dynastyowner.com/)
 
-## Description
+It is written in TypeScript, using express as main backend framework and Angular as main frontend framework.
 
-This project is a basic API that implements Create, Read, Update, Delete operations demonstrating how to integrate certain modules.
+# How to start
 
-## Modules used
+Both, frontend and backend requires to have [NodeJS](https://nodejs.org/en/) installed. The application is tested and developed in the **10.15.3** version of NodeJS. 
 
-- <b>Typescript: </b>TypeScript is an open-source programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript, and adds optional static typing to the language.
+## Getting ready
 
-- <b>NodeJS: </b> Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.
+### Add SSH key to github account
 
-- <b>MongoDB: </b> MongoDB is an open-source document database and leading NoSQL database. MongoDB is written in C++.
+Some dependencies used by the project are private and requires go be authentited in order to install them.
 
-- <b>Koa: </b>Koa is a new web framework designed by the team behind Express, which aims to be a smaller, more expressive, and more robust foundation for web applications and APIs.
+Add SSH Key to your account by following this [guide](https://help.github.com/en/enterprise/2.18/user/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account).
 
-## How to start
+### Start dependant applications
 
-## Manual
+The core applications are dependant from Postgres, Redis and Elasticsearch. It is required to have those dependencies up and running before starting the core applications.
 
-You need to have[Node.js](https://nodejs.org) and [git](https://git-scm.com/) installed before starting the application. (I prefer `yarn` as package manager over `npm`).
-
-### Installation
+It is required to have [Docker](https://docs.docker.com/docker-for-windows/install/)  and [Docker Compose](https://docs.docker.com/compose/install/) installed.
 
 ```sh
 # Clone the repository
-git clone https://github.com/xorb/nkm-todo.git
+git clone git@github.com:crossroads-group/DynastyOwner.git
 
 # Change working directgry
-cd nkm-todo
+cd DynastyOwner/
+
+# Start containers
+docker-compose up
+```
+
+_This will download the images and start the dependant applications. If you prefer to run these applications in the background, add the **-d** flag to the docker-compose command._
+
+
+## Start Core Applications
+
+### UI application
+
+```sh
+# Clone the repository
+git clone git@github.com:crossroads-group/DynastyOwner.git
+
+# Change working directgry
+cd DynastyOwner/ui
 
 # Install dependencies
-yarn install
+npm install
+
+# Start the application
+npm start
 ```
 
-### Enviroment vars
+_Visit http://localhost:4203 to see the application._
 
-In order to start, we need to set enviroment variables like database credentials. Fill the .env file.
+### Core API
 
 ```sh
-cp example.env .env
+# Clone the repository
+git clone git@github.com:crossroads-group/DynastyOwner.git
+
+# Change working directgry
+cd DynastyOwner/server
+
+# Install dependencies
+npm install
+
+# Transpile TS to JS
+npm run gulp:build
+
+# Before starting CoreAPI, start database migrations. It should be done only at first time.
+npm run db:migrate
+
+# Start the application
+npm start
 ```
 
-### Starting
+### RealTime API
 
 ```sh
-# Development mode
-yarn run dev
+# Clone the repository
+git clone git@github.com:crossroads-group/DynastyOwner.git
+
+# Change working directgry
+cd DynastyOwner/realTime
+
+# Install dependencies
+npm install
+
+# Transpile TS to JS
+npm run gulp:build
+
+# Before starting RealTime API, start database migrations. It should be done only at first time.
+npm run db:migrate
+
+# Start the application
+npm start
 ```
+_For development, use **npm run gulp:watch** in order to reload the code automatically_
 
-## Docker
+## Add mock data and start playing
 
-You need to have [Docker](https://www.docker.com/community-edition) installed.
-
-### Run server
-
-Honestly, I didn't tried yet. But should look like this.
+Before start playing/testing in development mode, you need to add mock data and start some job proceses.
 
 ```sh
-# Pull de image from the container registry
-docker pull xorb/nkm-todo:1.0.0
-# Create a container
-docker run -it -p 8000:8080 xorb/nkm-todo:1.0.0
+
+# move to the Core API Folder
+cd DynastyOwner/server
+
+# Add mock data
+node ./build/server/app/draft/test/seedEverything.js
+
+# Run job for to initialize draft
+node ./build/server/app/draft/jobs/draftInitializer.job.js
+
+# Initialize draft engine
+node ./build/server/app/draft/jobs/draftEngine.job.js
+
+# Clean up empty past due rooms
+node ./build/server/app/mockDraftLobby/jobs/mockDraftLobbySweeper.job.js
+
+# Mock Draft Lobby Initializer Job
+node ./build/server/app/mockDraftLobby/jobs/mockDraftLobbyInitializer.job.js
+
 ```
 
-## Tests
-
-Eventually tests will be added. I'd appreciate it if you could help me.
-
-```sh
-# Into the working directory, run:
-yarn test
-```
-
-## API
-
-Here are listed all endpoints exposed by the API.
-
-### todos
-
-| **Método** | **URI**     | **Descripción**                | **Body**        |
-| ---------- | ----------- | ------------------------------ | --------------- |
-| POST       | /todos      | Create a todo.                 | text, completed |
-| GET        | /todos      | Get all todos.                 |                 |
-| GET        | /todos/{id} | Get a single todo by given id. |                 |
-| DEL        | /todos/{id} | Delete a todo by given id.     |                 |
-| PUT        | /todos/{id} | Update a ToDo by given id.     | text, completed |
-
-## Contribute
-
-I would really like a comments. So you can fork this repository and leave a PR with comments. Thanks.
-
-## Author
-
-Created and maintained by Dany Boza ([@xorbmoon](https://twitter.com/xorbmoon)).
+With those steps done, the application should be ready to use.
